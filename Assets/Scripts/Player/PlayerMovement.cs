@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public bool debugging = false;
-
-    private Rigidbody rigidbody;
+    private Rigidbody rbd;
 
     private int jumps = 2; // Used for double jumps
     private bool bGrounded = false; // Flag for if player is grounded
@@ -18,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake() {
         // Get Rigidbody off player
-        rigidbody = GetComponent<Rigidbody>();
+        rbd = GetComponent<Rigidbody>();
     }
 
     // Triggered upon mouse down on the player sphere
@@ -53,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if(debugging) {
+        if(GameManager.instance.debugging) {
             Debug.DrawLine(transform.position, transform.position + (Vector3.down * 0.7f), Color.red, 0.01f);
         }        
     }
@@ -67,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
             groundedTimer = 0.0f;
             bStartDrag = false;
             bGrounded = false;
-            rigidbody.AddForce(ballForceDirection);
+            rbd.AddForce(ballForceDirection);
 
             // Take away jump
             jumps--;
