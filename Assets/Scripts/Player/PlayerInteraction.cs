@@ -11,11 +11,21 @@ public class PlayerInteraction : MonoBehaviour {
     }
 
     private void OnCollisionStay(Collision other) {
-        
+        switch(other.gameObject.tag) {
+            case "Platform":
+                if(transform.parent == null) {
+                    transform.SetParent(other.transform);
+                }
+                break;
+        }
     }
 
     private void OnCollisionExit(Collision other) {
-        
+        switch(other.gameObject.tag) {
+            case "Platform":
+                transform.SetParent(null);
+                break;
+        }
     }
 
     private void OnTriggerEnter(Collider other) {
