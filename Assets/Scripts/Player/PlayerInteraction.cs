@@ -3,7 +3,11 @@ using System.Collections;
 
 public class PlayerInteraction : MonoBehaviour {
     private void OnCollisionEnter(Collision other) {
-        
+        switch(other.gameObject.tag) {
+            case "Enemy":
+                other.gameObject.GetComponent<BaseEnemy>().Damage(10.0f);
+                break;
+        }
     }
 
     private void OnCollisionStay(Collision other) {

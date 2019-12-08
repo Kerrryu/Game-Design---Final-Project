@@ -6,41 +6,37 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rbd;
 
-    private int jumps = 2; // Used for double jumps
+    public float moveSpeed = 1.0f;
+    public float runSpeedModifier = 0.5f;
+    public float jumpSpeed = 5.0f;
+    public int jumps = 2; // Used for double jumps
+    public float jumpDistanceCheck = 1.5f;
     private bool bGrounded = false; // Flag for if player is grounded
-    private float groundedTimer = 0.0f; // Timer to prevent early check of grounded
+    private float groundedTimer = 0; // Timer to prevent early check of grounded
     private static float groundedTimerThreshold = 0.5f; // The value grounded timer has to pass to reset grounded
-    private bool bStartDrag = false; // Flag if user is dragging from the player sphere
-    private Vector2 startMousePos; // The starting mouse position from where the player began dragging
-    private Vector2 ballForceDirection; // The direction force should be applied for the ball, this is calculated when dragging
+    private float moveDirection = 0;
 
     private void Awake() {
         // Get Rigidbody off player
         rbd = GetComponent<Rigidbody>();
     }
 
-    // Triggered upon mouse down on the player sphere
-    private void OnMouseDown() {
-        // Flag dragging and store starting position
-        bStartDrag = true;
-        startMousePos = Input.mousePosition;
-    }
-
     private void Update() {
         // Increase grounded timer
         groundedTimer += Time.deltaTime;
+        moveDirection = Input.GetAxis("Horizontal");
 
-        if(bStartDrag) {
-            // Get new mouse position from dragging and calculate the drag force direction
-            Vector2 newMousePos = Input.mousePosition;
-            Vector2 mouseDifference = newMousePos - startMousePos;
-            ballForceDirection = -mouseDifference;
-        }   
+        if(Input.GetButtonDown("Jump") && jumps > 0) {
+            rbd.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
+            jumps--;
+        }
     }
 
     private void FixedUpdate() {
+        rbd.velocity = new Vector3(moveDirection * moveSpeed, rbd.velocity.y, 0);
+        
         // Raycast to check if grounded
-        if(Physics.Raycast(transform.position, Vector3.down, 0.7f) && groundedTimer > groundedTimerThreshold) {
+        if(Physics.Raycast(transform.position, Vector3.down, jumpDistanceCheck) && groundedTimer > groundedTimerThreshold) {
             if(!bGrounded) {
                 bGrounded = true;
                 jumps = 2;
@@ -52,23 +48,18 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if(GameManager.instance.debugging) {
-            Debug.DrawLine(transform.position, transform.position + (Vector3.down * 0.7f), Color.red, 0.01f);
+            Debug.DrawLine(transform.position, transform.position + (Vector3.down * jumpDistanceCheck), Color.red, 0.01f);
         }        
     }
 
-    // Whenever the mouse goes up this is triggered
-    private void OnMouseUp() {
-        // Only apply effects if dragging is currently flagged to avoid unwanted effects
-        // Also check for if double jump is available
-        if(bStartDrag && jumps > 0) {
-            // Unflag and apply force
-            groundedTimer = 0.0f;
-            bStartDrag = false;
-            bGrounded = false;
-            rbd.AddForce(ballForceDirection);
+    private void LateUpdate() {
+        Vector3 pos = transform.position;
+        float distance = transform.position.z - Camera.main.transform.position.z;
 
-            // Take away jump
-            jumps--;
-        }
+        float leftBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, distance)).x + 0.5f;
+        float rightBorder = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, distance)).x - 0.5f;
+
+        pos.x = Mathf.Clamp(pos.x, leftBorder, rightBorder);
+        transform.position = pos;
     }
 }
