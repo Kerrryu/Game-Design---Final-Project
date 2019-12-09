@@ -10,6 +10,8 @@ public abstract class BaseEnemy : MonoBehaviour
     private Slider UI_healthBar;
     private TextMeshProUGUI UI_nameText;
 
+    public bool bInvulnerable = false;
+
     private float health = 100f;
     public float maxHealth = 100f;
 
@@ -74,6 +76,10 @@ public abstract class BaseEnemy : MonoBehaviour
     }
 
     public virtual void DoDeath() {
+        if(bInvulnerable) {
+            return;
+        }
+
         Destroy(gameObject);
     }
 }

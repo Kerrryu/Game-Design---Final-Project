@@ -2035,9 +2035,10 @@ GameObject:
   - component: {fileID: 1287727119}
   - component: {fileID: 1287727118}
   - component: {fileID: 1287727117}
+  - component: {fileID: 1287727121}
   m_Layer: 0
   m_Name: TeleportEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2114,6 +2115,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1287727121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287727116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5fd344438309497cb32c6a4f996c134, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  speed: 1
+  teleportTime: 5
+  explodeTime: 1
+  explosionForce: 2
 --- !u!1 &1300231302
 GameObject:
   m_ObjectHideFlags: 0
