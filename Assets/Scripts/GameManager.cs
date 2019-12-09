@@ -20,12 +20,14 @@ public class GameManager : MonoBehaviour
     private static int _coins = 0;
     public static int COINS {
         get {
-            return _coins;
+            return PlayerPrefs.GetInt("coins");
         }
 
         set {
             value = Mathf.Max(0, value);
             _coins = value;
+
+            PlayerPrefs.SetInt("coins", _coins);
 
             if(CoinsChanged != null) {
                 CoinsChanged();

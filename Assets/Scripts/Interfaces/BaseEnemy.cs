@@ -56,9 +56,10 @@ public abstract class BaseEnemy : MonoBehaviour
     }
 
     public void Damage(float damage) {
-        health -= damage;
-        CheckDeath();
-        UpdateHealthBar();
+        // health -= damage;
+        // CheckDeath();
+        // UpdateHealthBar();
+        DoDeath();
     }
 
     public void UpdateHealthBar() {

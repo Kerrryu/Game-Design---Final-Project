@@ -9,9 +9,12 @@ using DG.Tweening;
 public class MainMenu : MonoBehaviour
 {
     public TextMeshProUGUI titleText;
+    public TextMeshProUGUI coinsText;
 
     private void Start() {
         StartCoroutine(MoveTitle());
+
+        coinsText.text = "Coins: " + PlayerPrefs.GetInt("coins");
     }
 
     IEnumerator MoveTitle() {

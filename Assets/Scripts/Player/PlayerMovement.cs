@@ -33,6 +33,13 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void FixedUpdate() {
+        if(GameManager.instance.debugging) {
+            Debug.DrawLine(transform.position, transform.position + (Vector3.down * jumpDistanceCheck), Color.red, 0.01f);
+        }   
+        
+        if(PlayerManager.instance.bDead) 
+            return;
+
         rbd.velocity = new Vector3(moveDirection * moveSpeed, rbd.velocity.y, 0);
         
         // Raycast to check if grounded
@@ -47,9 +54,9 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if(GameManager.instance.debugging) {
-            Debug.DrawLine(transform.position, transform.position + (Vector3.down * jumpDistanceCheck), Color.red, 0.01f);
-        }        
+        if(bGrounded && jumps != 2) {
+            jumps = 2;
+        }     
     }
 
     private void LateUpdate() {

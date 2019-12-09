@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(PlayerMovement), typeof(PlayerInteraction), typeof(PlayerUI))]
 public class PlayerManager : MonoBehaviour {
@@ -46,5 +47,36 @@ public class PlayerManager : MonoBehaviour {
 
             return _playerUI;
         }
+    }
+
+    private int lives = 3;
+    public int GetLives() { return lives; }
+
+    public bool bDead = false;
+
+    public void LoseLife() {
+        playerUI.DisableHeart();
+        lives--;
+        if(lives <= 0) {
+            StartCoroutine(Dead());
+        }
+    }
+
+    public void InstantKill() {
+        lives = 0;
+        StartCoroutine(Dead());
+    }
+
+    private float timeTilReset = 3.0f;
+    private IEnumerator Dead() {
+        if(!bDead) {
+            bDead = true;
+            playerUI.ShowGameOverScreen(timeTilReset);
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            GetComponent<Rigidbody>().AddForce(Vector3.right * 5, ForceMode.Impulse);
+            yield return new WaitForSeconds(timeTilReset);
+            SceneManager.LoadScene("MainMenu");
+        }
+        yield return null;
     }
 }

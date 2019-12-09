@@ -5,8 +5,12 @@ public class PlayerInteraction : MonoBehaviour {
     private void OnCollisionEnter(Collision other) {
         switch(other.gameObject.tag) {
             case "Enemy":
-                other.gameObject.GetComponent<BaseEnemy>().Damage(10.0f);
+                PlayerManager.instance.LoseLife();
                 break;
+            case "Deathzone":
+                PlayerManager.instance.InstantKill();
+                break;
+
         }
     }
 
