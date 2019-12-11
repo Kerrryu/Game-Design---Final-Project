@@ -10,20 +10,19 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeedModifier = 0.5f;
     public float jumpSpeed = 5.0f;
     public int jumps = 2; // Used for double jumps
-    public float jumpDistanceCheck = 1.5f;
-    private bool bGrounded = false; // Flag for if player is grounded
-    private float groundedTimer = 0; // Timer to prevent early check of grounded
     private static float groundedTimerThreshold = 0.5f; // The value grounded timer has to pass to reset grounded
     private float moveDirection = 0;
+
+    private float distanceToBottomCollider;
+    private bool canResetJumps = true;
 
     private void Awake() {
         // Get Rigidbody off player
         rbd = GetComponent<Rigidbody>();
+        distanceToBottomCollider = GetComponent<Collider>().bounds.extents.y;
     }
 
     private void Update() {
-        // Increase grounded timer
-        groundedTimer += Time.deltaTime;
         moveDirection = Input.GetAxis("Horizontal");
 
         if(Input.GetButtonDown("Jump") && jumps > 0) {
@@ -33,30 +32,27 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        if(GameManager.instance.debugging) {
-            Debug.DrawLine(transform.position, transform.position + (Vector3.down * jumpDistanceCheck), Color.red, 0.01f);
-        }   
-        
         if(PlayerManager.instance.bDead) 
             return;
 
         rbd.velocity = new Vector3(moveDirection * moveSpeed, rbd.velocity.y, 0);
         
         // Raycast to check if grounded
-        if(Physics.Raycast(transform.position, Vector3.down, jumpDistanceCheck) && groundedTimer > groundedTimerThreshold) {
-            if(!bGrounded) {
-                bGrounded = true;
-                jumps = 2;
-            }
-        } else {
-            if(bGrounded) {
-                bGrounded = false;
-            }
-        }
 
-        if(bGrounded && jumps != 2) {
+        if(IsGrounded() && canResetJumps) {
+            canResetJumps = false;
+            StartCoroutine(ResetJumpTimer());
             jumps = 2;
-        }     
+        }   
+    }
+
+    private bool IsGrounded() {
+        return Physics.Raycast(transform.position, -Vector3.up, distanceToBottomCollider + 0.1f);
+    }
+
+    private IEnumerator ResetJumpTimer() {
+        yield return new WaitForSeconds(0.2f);
+        canResetJumps = true;
     }
 
     private void LateUpdate() {

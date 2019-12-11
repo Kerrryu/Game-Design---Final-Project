@@ -10,7 +10,10 @@ public class PlayerInteraction : MonoBehaviour {
             case "Deathzone":
                 PlayerManager.instance.InstantKill();
                 break;
-
+            case "Projectile":
+                Destroy(other.gameObject);
+                PlayerManager.instance.LoseLife();
+                break;
         }
     }
 
