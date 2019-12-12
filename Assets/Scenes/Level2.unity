@@ -1443,7 +1443,7 @@ MonoBehaviour:
   - {fileID: 8526031607809932024, guid: 45025e3824741ab48b2d388f92249e0a, type: 3}
   enemies:
   - {fileID: 8605318708844752260, guid: 7da666e8667e7e741a7dbe790cb7bdde, type: 3}
-  - {fileID: 1631503320461211502, guid: 82911fbd177ee284199f7fa111e41c30, type: 3}
+  - {fileID: 1631503320461211502, guid: b254aab98142241cb8b6eb3014d5e89f, type: 3}
   powerups:
   - {fileID: 8184676170575518214, guid: 6a9c966ee8ba0bb4691a00ac47714f4e, type: 3}
   - {fileID: 8184676170575518214, guid: 579aaa93267fe42ad9edb589fb8c7d2f, type: 3}
@@ -1643,7 +1643,7 @@ Transform:
   m_LocalScale: {x: 9000, y: 100, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1926498279
 GameObject:
@@ -1862,7 +1862,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 3127
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2013,7 +2013,7 @@ PrefabInstance:
     - target: {fileID: 5021568104513459306, guid: d3e786a9f65ed49a58d1a40dbb114ced,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5021568104513459306, guid: d3e786a9f65ed49a58d1a40dbb114ced,
         type: 3}

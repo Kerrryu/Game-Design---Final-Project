@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1631503320461211501}
   - component: {fileID: 1631503320461211500}
   - component: {fileID: 1631503320461211503}
-  - component: {fileID: 1631503320461211507}
+  - component: {fileID: -3940894077481039999}
   m_Layer: 11
-  m_Name: TeleportEnemy
+  m_Name: BomberEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,7 +94,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1631503320461211507
+--- !u!114 &-3940894077481039999
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,17 +103,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1631503320461211502}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5fd344438309497cb32c6a4f996c134, type: 3}
+  m_Script: {fileID: 11500000, guid: ae6d405cfc7d895459b5325364506e81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bInvulnerable: 0
   maxHealth: 100
-  speed: 1
-  teleportTime: 5
-  explodeTime: 3
-  explosionForce: 50
-  explosionParticles: {fileID: 1631503320602618251}
-  explosionIndicator: {fileID: 1631503320534728082}
+  speed: 10
+  yOffsetRange: {x: 5, y: 7}
+  projectileDrop: {fileID: 2658509963298716902, guid: 1d2a13f684f36466ab3f9b14a7a9b9c7,
+    type: 3}
 --- !u!1 &1631503320534728076
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,12 +266,6 @@ PrefabInstance:
 --- !u!4 &1631503320602618245 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2015675957608911376, guid: 7ff404b93eca4403884abcc7442cce7f,
-    type: 3}
-  m_PrefabInstance: {fileID: 963028402673073045}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &1631503320602618251 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2015675957608911390, guid: 7ff404b93eca4403884abcc7442cce7f,
     type: 3}
   m_PrefabInstance: {fileID: 963028402673073045}
   m_PrefabAsset: {fileID: 0}
