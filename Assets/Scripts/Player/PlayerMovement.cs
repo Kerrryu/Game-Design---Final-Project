@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     private float distanceToBottomCollider;
     private bool canResetJumps = true;
 
+    private Vector3 lastGroundPoint;
+
     private void Awake() {
         // Get Rigidbody off player
         rbd = GetComponent<Rigidbody>();
@@ -44,6 +46,16 @@ public class PlayerMovement : MonoBehaviour
             rbd.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
             jumps--;
         }
+
+        if(transform.position.y < -40) {
+            ResetPlayer();
+        }
+    }
+
+    private void ResetPlayer() {
+        PlayerManager.instance.LoseLife();
+        rbd.velocity = Vector3.zero;
+        transform.position = lastGroundPoint;
     }
 
     private void FixedUpdate() {
@@ -58,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
             canResetJumps = false;
             StartCoroutine(ResetJumpTimer());
             jumps = 2;
+            lastGroundPoint = transform.position;
         }   
     }
 

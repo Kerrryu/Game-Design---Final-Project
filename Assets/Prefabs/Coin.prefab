@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7879231180161026697}
   - component: {fileID: 7879231180161026696}
   - component: {fileID: 7879231180161026695}
+  - component: {fileID: 6573935532642891547}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Coin
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7879231180161026694}
-  m_LocalRotation: {x: -0.24924724, y: -0.24924724, z: 0.6617219, w: 0.6617219}
+  m_LocalRotation: {x: -0.24924591, y: -0.2492459, z: 0.6617224, w: 0.66172236}
   m_LocalPosition: {x: 3.32, y: 1.61, z: -0.19}
   m_LocalScale: {x: 1, y: 0.12463069, z: 1}
   m_Children: []
@@ -58,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e4b9abca0af46de47a307325035ca5aa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,3 +93,17 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &6573935532642891547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7879231180161026694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 007af6b3b234c40beb0cbc5ef76a714d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 0
+  speed: 30

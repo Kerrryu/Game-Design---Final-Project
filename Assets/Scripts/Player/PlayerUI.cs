@@ -11,8 +11,12 @@ public class PlayerUI : MonoBehaviour
     public TextMeshProUGUI coinsText;
     public TextMeshProUGUI levelText;
 
+    public TextMeshProUGUI godmodeStatus;
+
     public Image gameOverScreen;
     public Transform livesParent;
+
+    public GameObject winScreen;
 
     private void Awake() {
         GameManager.CoinsChanged += CoinValueChanges;
@@ -43,5 +47,17 @@ public class PlayerUI : MonoBehaviour
     public void DisableHeart() {
         var heart = livesParent.GetChild(PlayerManager.instance.GetLives()-1);
         heart.gameObject.SetActive(false);
+    }
+
+    public void UpdateGodModeStatus(bool status) {
+        godmodeStatus.text = "Press P to Activate Godmode: " + status;
+    }
+
+    public void ToMenu() {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ShowWin() {
+        winScreen.SetActive(true);
     }
 }

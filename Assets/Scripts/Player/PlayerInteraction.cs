@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using DG.Tweening;
 
 public class PlayerInteraction : MonoBehaviour {
     private void OnCollisionEnter(Collision other) {
@@ -46,14 +47,21 @@ public class PlayerInteraction : MonoBehaviour {
         switch(other.gameObject.tag) {
             case "Coin":
                 Destroy(other.gameObject.GetComponent<Collider>());
-                other.gameObject.GetComponent<Animator>().Play("Collect");
                 StartCoroutine(destoyCoin(other.gameObject));
                 GameManager.COINS += 10;
+                break;
+
+            case "LevelComplete":
+                PlayerManager.instance.WinGame();
                 break;
         }
     }
 
     IEnumerator destoyCoin(GameObject coin) {
+        coin.transform.DOMoveY(coin.transform.position.y + 5, 1.0f);
+        yield return new WaitForSeconds(1.0f);
+        coin.transform.DOMoveY(coin.transform.position.y - 20, 1.0f);
+        coin.transform.DOMoveZ(-1, 1.0f);
         yield return new WaitForSeconds(1.0f);
         Destroy(coin);
     }

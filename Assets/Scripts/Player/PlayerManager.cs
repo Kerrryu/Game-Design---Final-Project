@@ -60,12 +60,28 @@ public class PlayerManager : MonoBehaviour {
         }
     }
 
+    private bool godmode = false;
     private int lives = 3;
     public int GetLives() { return lives; }
 
     public bool bDead = false;
 
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.P)) {
+            godmode = !godmode;
+            playerUI.UpdateGodModeStatus(godmode);
+        }
+    }
+
+    public void WinGame() {
+        godmode = true;
+        playerUI.ShowWin();
+    }
+
     public void LoseLife() {
+        if(godmode)
+            return;
+
         playerUI.DisableHeart();
         lives--;
         if(lives <= 0) {
@@ -74,6 +90,9 @@ public class PlayerManager : MonoBehaviour {
     }
 
     public void InstantKill() {
+        if(godmode) 
+            return;
+
         lives = 0;
         StartCoroutine(Dead());
     }

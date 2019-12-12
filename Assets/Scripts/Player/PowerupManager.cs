@@ -10,6 +10,12 @@ public class PowerupManager : MonoBehaviour
     public Transform visualPowerupParent;
     private GameObject activeVisual = null;
 
+    public void ResetPowerup() {
+        HideActiveVisual();
+        HidePowerupUI();
+        currentPowerup = null;
+    }
+
     public void ShowVisual(string parentName) {
         HideActiveVisual();
 

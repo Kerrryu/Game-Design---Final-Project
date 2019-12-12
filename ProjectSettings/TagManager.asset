@@ -11,6 +11,7 @@ TagManager:
   - Projectile
   - Powerup
   - FriendlyProjectile
+  - LevelComplete
   layers:
   - Default
   - TransparentFX

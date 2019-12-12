@@ -40,7 +40,6 @@ public abstract class BasePowerup : MonoBehaviour
         Debug.Log(powerupName + " complete");
         bActivated = false;
 
-        PlayerManager.instance.powerupManager.HideActiveVisual();
-        PlayerManager.instance.powerupManager.HidePowerupUI();
+        PlayerManager.instance.powerupManager.ResetPowerup();
     }
 }

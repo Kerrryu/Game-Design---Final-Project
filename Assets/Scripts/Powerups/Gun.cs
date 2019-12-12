@@ -43,7 +43,9 @@ public class Gun : BasePowerup
 
         fireRateTimer = 0;
 
-        var projectileObj = Instantiate(projectile, firePoint.position, firePoint.rotation);
+        var firePos = firePoint.position;
+        firePos.z = 0;
+        var projectileObj = Instantiate(projectile, firePos, firePoint.rotation);
         projectileObj.GetComponent<Rigidbody>().AddForce(projectileObj.transform.up * 500);
     }   
 

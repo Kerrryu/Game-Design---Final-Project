@@ -13,6 +13,7 @@ public class Teleport : BasePowerup
 
     public override void Activate() {
         base.Activate();
+        PlayerManager.instance.transform.Find("Model").GetComponent<Renderer>().material.color = Color.blue;
     }
 
     public override void Tick() {
@@ -31,5 +32,6 @@ public class Teleport : BasePowerup
 
     public override void Deactivate() {
         base.Deactivate();
+        PlayerManager.instance.transform.Find("Model").GetComponent<Renderer>().material.color = Color.white;
     }
 }
