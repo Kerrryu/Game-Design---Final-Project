@@ -1432,8 +1432,9 @@ MonoBehaviour:
   - {fileID: 8605318708844752260, guid: 7da666e8667e7e741a7dbe790cb7bdde, type: 3}
   - {fileID: 1631503320461211502, guid: 82911fbd177ee284199f7fa111e41c30, type: 3}
   powerups:
-  - {fileID: 8184676170575518214, guid: 6a9c966ee8ba0bb4691a00ac47714f4e, type: 3}
+  - {fileID: 8184676170575518214, guid: 628737e25cd45485dbdf8d6850539e9f, type: 3}
   - {fileID: 5949284839067655833, guid: 29a8786d7e44b3b4790176606f571caf, type: 3}
+  - {fileID: 8184676170575518214, guid: 579aaa93267fe42ad9edb589fb8c7d2f, type: 3}
   coin: {fileID: 7879231180161026694, guid: fad5d33d3282b4a06b19ac9b409ceecb, type: 3}
 --- !u!4 &1404937676
 Transform:
@@ -2100,21 +2101,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6030464774478245221, guid: 21ab704009f76e14ca3121bb5e6925d0,
-        type: 3}
-      propertyPath: jumpSpeed
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6030464774478245220, guid: 21ab704009f76e14ca3121bb5e6925d0,
-        type: 3}
-      propertyPath: godmodeStatus
-      value: 
-      objectReference: {fileID: 997051355}
-    - target: {fileID: 6030464774478245220, guid: 21ab704009f76e14ca3121bb5e6925d0,
-        type: 3}
-      propertyPath: winScreen
-      value: 
-      objectReference: {fileID: 1067879056}
     - target: {fileID: 6030464774394126203, guid: 21ab704009f76e14ca3121bb5e6925d0,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2140,5 +2126,28 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 997051354, guid: 21ab704009f76e14ca3121bb5e6925d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1067879057, guid: 21ab704009f76e14ca3121bb5e6925d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030464774478245221, guid: 21ab704009f76e14ca3121bb5e6925d0,
+        type: 3}
+      propertyPath: jumpSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030464774478245220, guid: 21ab704009f76e14ca3121bb5e6925d0,
+        type: 3}
+      propertyPath: godmodeStatus
+      value: 
+      objectReference: {fileID: 997051355}
+    - target: {fileID: 6030464774478245220, guid: 21ab704009f76e14ca3121bb5e6925d0,
+        type: 3}
+      propertyPath: winScreen
+      value: 
+      objectReference: {fileID: 1067879056}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21ab704009f76e14ca3121bb5e6925d0, type: 3}

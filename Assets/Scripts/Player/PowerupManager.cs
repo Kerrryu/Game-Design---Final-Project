@@ -19,8 +19,9 @@ public class PowerupManager : MonoBehaviour
     public void ShowVisual(string parentName) {
         HideActiveVisual();
 
-        activeVisual = visualPowerupParent.Find(parentName).gameObject;
-        if(activeVisual) {
+        var potActive = visualPowerupParent.Find(parentName);
+        if(potActive) {
+            activeVisual = potActive.gameObject;
             activeVisual.gameObject.SetActive(true);
         }
     }
