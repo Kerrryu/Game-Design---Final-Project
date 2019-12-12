@@ -14,6 +14,11 @@ public class PlayerInteraction : MonoBehaviour {
                 Destroy(other.gameObject);
                 PlayerManager.instance.LoseLife();
                 break;
+            case "Powerup":
+                if(PlayerManager.instance.powerupManager.CanPickup()) {
+                    PlayerManager.instance.powerupManager.PickupPowerup(other.gameObject);
+                }
+                break;
         }
     }
 
@@ -21,7 +26,9 @@ public class PlayerInteraction : MonoBehaviour {
         switch(other.gameObject.tag) {
             case "Platform":
                 if(transform.parent == null) {
-                    transform.SetParent(other.transform);
+                    var emptyObject = new GameObject();
+                    emptyObject.transform.parent = other.transform;
+                    transform.SetParent(emptyObject.transform);
                 }
                 break;
         }
@@ -38,9 +45,16 @@ public class PlayerInteraction : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         switch(other.gameObject.tag) {
             case "Coin":
-                Destroy(other.gameObject);
+                Destroy(other.gameObject.GetComponent<Collider>());
+                other.gameObject.GetComponent<Animator>().Play("Collect");
+                StartCoroutine(destoyCoin(other.gameObject));
                 GameManager.COINS += 10;
                 break;
         }
+    }
+
+    IEnumerator destoyCoin(GameObject coin) {
+        yield return new WaitForSeconds(1.0f);
+        Destroy(coin);
     }
 }

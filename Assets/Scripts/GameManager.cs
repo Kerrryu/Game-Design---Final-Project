@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     }
     public bool debugging = false;
 
+    public LayerMask clickLayerMask;
+
     private static int _coins = 0;
     public static int COINS {
         get {

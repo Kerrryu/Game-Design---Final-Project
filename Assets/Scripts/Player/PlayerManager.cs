@@ -49,6 +49,17 @@ public class PlayerManager : MonoBehaviour {
         }
     }
 
+    private PowerupManager _powerupManager = null;
+    public PowerupManager powerupManager {
+        get {
+            if(_powerupManager == null) {
+                _powerupManager = GetComponent<PowerupManager>();
+            }
+
+            return _powerupManager;
+        }
+    }
+
     private int lives = 3;
     public int GetLives() { return lives; }
 

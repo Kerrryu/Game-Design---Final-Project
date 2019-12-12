@@ -6,6 +6,10 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rbd;
 
+    public Transform playerModel;
+
+    [Space]
+
     public float moveSpeed = 1.0f;
     public float runSpeedModifier = 0.5f;
     public float jumpSpeed = 5.0f;
@@ -24,6 +28,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update() {
         moveDirection = Input.GetAxis("Horizontal");
+
+        // flip player
+        // if(moveDirection > 0 && playerModel.localScale.x != 1) {
+        //     var newScale = playerModel.localScale;
+        //     newScale.x = 1;
+        //     playerModel.localScale = newScale;
+        // } else if (moveDirection < 0 && playerModel.localScale.x != -1) {
+        //     var newScale = playerModel.localScale;
+        //     newScale.x = -1;
+        //     playerModel.localScale = newScale;
+        // }
 
         if(Input.GetButtonDown("Jump") && jumps > 0) {
             rbd.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);

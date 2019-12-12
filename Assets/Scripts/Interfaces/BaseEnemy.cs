@@ -64,6 +64,14 @@ public abstract class BaseEnemy : MonoBehaviour
         DoDeath();
     }
 
+    private void OnTriggerEnter(Collider other) {
+        if(other.gameObject.CompareTag("FriendlyProjectile")) {
+            DoDeath();
+
+            Destroy(other.gameObject);
+        }
+    }
+
     public void UpdateHealthBar() {
         UI_healthBar.maxValue = maxHealth;
         UI_healthBar.value = health;
