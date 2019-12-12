@@ -568,18 +568,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 321467115}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 839796828}
-        m_MethodName: ToMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &321467115
@@ -833,18 +822,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6030464773706376504}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &839796828 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6030464774478245220, guid: 21ab704009f76e14ca3121bb5e6925d0,
-    type: 3}
-  m_PrefabInstance: {fileID: 6030464773706376504}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f476b9b24e0a48b087ff2f9b44f3ce6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &997051353
 GameObject:
   m_ObjectHideFlags: 0
@@ -2100,11 +2077,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6030464774478245221, guid: 21ab704009f76e14ca3121bb5e6925d0,
-        type: 3}
-      propertyPath: jumpSpeed
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 6030464774478245220, guid: 21ab704009f76e14ca3121bb5e6925d0,
         type: 3}
       propertyPath: godmodeStatus
@@ -2115,6 +2087,16 @@ PrefabInstance:
       propertyPath: winScreen
       value: 
       objectReference: {fileID: 1067879056}
+    - target: {fileID: 6030464774478245220, guid: 21ab704009f76e14ca3121bb5e6925d0,
+        type: 3}
+      propertyPath: continueButton
+      value: 
+      objectReference: {fileID: 321467111}
+    - target: {fileID: 6030464774478245221, guid: 21ab704009f76e14ca3121bb5e6925d0,
+        type: 3}
+      propertyPath: jumpSpeed
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6030464774394126203, guid: 21ab704009f76e14ca3121bb5e6925d0,
         type: 3}
       propertyPath: m_AnchorMax.x

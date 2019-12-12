@@ -57,7 +57,22 @@ public class PlayerUI : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public GameObject continueButton;
     public void ShowWin() {
         winScreen.SetActive(true);
+
+        if(GameManager.instance.level == 3) {
+            continueButton.GetComponentInChildren<TextMeshProUGUI>().text = "Menu";
+            continueButton.GetComponent<Button>().onClick.RemoveAllListeners();
+            continueButton.GetComponent<Button>().onClick.AddListener(() => {
+                SceneManager.LoadScene("Main Menu");
+            });
+        } else {
+            continueButton.GetComponentInChildren<TextMeshProUGUI>().text = "Continue";
+            continueButton.GetComponent<Button>().onClick.RemoveAllListeners();
+            continueButton.GetComponent<Button>().onClick.AddListener(() => {
+                SceneManager.LoadScene("Level" + (GameManager.instance.level + 1));
+            });
+        }
     }
 }

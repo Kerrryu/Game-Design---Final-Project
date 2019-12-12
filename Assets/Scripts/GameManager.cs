@@ -1,20 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager _instance = null;
-    public static GameManager instance { 
-        get {
-            if(_instance == null) {
-                _instance = FindObjectOfType<GameManager>();
-            }
-
-            return _instance;
-        }
-    }
+    public static GameManager instance = null;
     public bool debugging = false;
 
     public LayerMask clickLayerMask;
@@ -51,12 +43,20 @@ public class GameManager : MonoBehaviour
     }
 
     private void Awake() {
+        if(instance != null && instance != this) {
+            Destroy(gameObject);
+        }
+
+        instance = this;
         DontDestroyOnLoad(gameObject);
         StartGame();
     }
 
     public void StartGame() {
-        level = 1;
+        if(SceneManager.GetActiveScene().name.Contains("Level")) {
+            var levelId = SceneManager.GetActiveScene().name.Replace("Level", "");
+            level = int.Parse(levelId);
+        }
     }
 
     private IEnumerator DisplayLevel() {
