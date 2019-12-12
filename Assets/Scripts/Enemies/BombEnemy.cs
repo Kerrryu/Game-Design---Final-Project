@@ -37,7 +37,7 @@ public class BombEnemy : BaseEnemy
         if(transform.position == targetPos && canDrop) {
             canDrop = false;
             var go = GameObject.Instantiate(projectileDrop, transform.position + new Vector3(0, -1, 0), Quaternion.identity);
-            Destroy(go);
+            StartCoroutine(DestroyProjectile(go));
         }
     }
 
